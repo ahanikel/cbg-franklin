@@ -37,8 +37,8 @@
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 18px;
 
-  /* nav height */
-  --nav-height: 64px;
+  --nav-height: 130px;
+  --header-height: 130px;
 
 }
 
@@ -57,7 +57,10 @@ body.appear {
 }
 
 header {
-  height: var(--nav-height);
+  height: var(--header-height);
+  background-color: dodgerblue;
+  margin: 15px;
+  border-radius: 4px;
 }
 
 h1, h2, h3,
@@ -67,7 +70,7 @@ h4, h5, h6 {
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
-  scroll-margin: calc(var(--nav-height) + 1em);
+  scroll-margin: calc(var(--header-height) + 1em);
 }
 
 h1 { font-size: var(--heading-font-size-xxl) }
@@ -143,6 +146,12 @@ a.button.secondary, button.secondary {
   color: var(--text-color)
 } 
 
+@media (min-width: 900px) {
+  main {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
 
 main input {
   font-size: 1.25rem;
@@ -234,4 +243,10 @@ main .section[data-section-status='initialized'] {
 
 main .section.highlight {
   background-color: var(--highlight-background-color);
+}
+
+main .sidenav {
+  padding-left: 15px;
+  padding-right: 15px;
+  width: var(--nav-height);
 }

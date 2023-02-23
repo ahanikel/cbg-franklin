@@ -1,8 +1,8 @@
 import {
   sampleRUM,
   buildBlock,
-  loadHeader,
-  loadFooter,
+  decorateBlock,
+  loadBlock,
   decorateButtons,
   decorateIcons,
   decorateSections,
@@ -51,6 +51,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  buildSideNav(main);
   decorateBlocks(main);
 }
 
@@ -85,6 +86,32 @@ export function addFavIcon(href) {
 }
 
 /**
+ * loads a block named 'header' into header
+ */
+export function loadHeader(header) {
+  const headerBlock = buildBlock('header', 'Header');
+  header.append(headerBlock);
+  decorateBlock(headerBlock);
+  return loadBlock(headerBlock);
+}
+
+function buildSideNav(main) {
+  const sidenav = document.createElement('div');
+  sidenav.setAttribute('class', 'sidenav');
+  main.append(sidenav);
+}
+
+/**
+ * loads a block named 'nav' into nav
+ */
+export function loadNav(nav) {
+  const navBlock = buildBlock('nav', 'Navigation');
+  nav.append(navBlock);
+  decorateBlock(navBlock);
+  return loadBlock(navBlock);
+}
+
+/**
  * loads everything that doesn't need to be delayed.
  */
 async function loadLazy(doc) {
@@ -96,7 +123,7 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
+  loadNav(doc.querySelector('.sidenav'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
