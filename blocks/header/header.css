@@ -1,0 +1,61 @@
+div.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+div.header > div {
+    display: flex;
+    align-items: center;
+}
+
+div.header > nav {
+    display: flex;
+    align-items: right;
+    z-index: 10;
+    width: 200px;
+}
+
+.header-menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: auto; /* This will move the menu icon to the right */
+}
+
+.header-menu-right {
+    display: none;
+    position: relative;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    padding: 10px;
+    margin: 0;
+    list-style: none;
+}
+
+.header-menu-right li {
+    margin-bottom: 10px;
+}
+
+.header-menu-right a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+#header-menu-toggle {
+    display: none;
+}
+
+#header-menu-toggle:checked + .header-menu-right {
+  display: block;
+}
+
+.breadcrumb {
+    padding-left: 50px;
+}
+.breadcrumb > * {
+    padding: 10px;
+}
